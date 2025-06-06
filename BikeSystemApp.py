@@ -30,4 +30,3 @@ class BikeSystem:
     def viewStock(self):
         print("total Bikes:",self.bikes_stock)
 
-testing = "me"
