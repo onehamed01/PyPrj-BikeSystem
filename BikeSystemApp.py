@@ -17,9 +17,12 @@ class BikeSystem:
                 break
 
         total_price = self.type_rent[type_rent] * count_type_rent * self.bike_count
-        self.bikes_stock -= self.bike_count
-        print(f"you have rented {self.bike_count} Bikes, for {count_type_rent} {type_rent}\ntotal price is {total_price}.00£")
+        if 3 <= self.bike_count <= 5: 
+            total_price = 0.30 * total_price
 
+        self.bikes_stock -= self.bike_count
+        print(f"you have rented {self.bike_count} Bikes, for {count_type_rent} {type_rent}\ntotal price is {total_price} £")
+        
     def returnBike(self, count_return_bikes):
         if count_return_bikes != self.bike_count:
             print("you didn't return all bikes")
