@@ -14,14 +14,11 @@ class BikeSystem:
         if type_rent not in self.type_rent:
             print("Invalid Type rent")
             return
-        else:
-            total_price = self.type_rent[type_rent] * count_type_rent * self.bike_count
-            if 3 <= self.bike_count <= 5: 
-                total_price *= 0.7
 
-        self.bikes_stock -= self.bike_count
+        calculate_price = lambda base_price: base_price * 0.7 if 3 <= self.bike_count <= 5 else base_price
+        base_price = self.type_rent[type_rent] * count_type_rent * self.bike_count
+        total_price = calculate_price(base_price)
         print(f"you have rented {self.bike_count} Bikes, for {count_type_rent} {type_rent}\ntotal price is {total_price} £")
-        print(f"total Bikes: {self.bikes_stock}")
 
     def returnBike(self, count_return_bikes):
         if count_return_bikes != self.bike_count:
